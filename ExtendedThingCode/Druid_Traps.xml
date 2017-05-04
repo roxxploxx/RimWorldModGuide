@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef Name="PlantWithExtComps" Abstract="True" Class="UnificaMagica.ExtThingDef">
+        <category>Plant</category>
+        <thingClass>UnificaMagica.PlantExtended</thingClass>
+        <altitudeLayer>LowPlant</altitudeLayer>
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <Flammability>0.8</Flammability>
+        </statBases>
+        <tickerType>Long</tickerType>
+        <selectable>False</selectable>
+        <neverMultiSelect>True</neverMultiSelect>
+        <drawerType>MapMeshOnly</drawerType>
+        <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+        <graphicData>
+            <shaderType>CutoutPlant</shaderType>
+        </graphicData>
+        <ingestible>
+            <foodType>Plant</foodType>
+            <preferability>RawBad</preferability>
+        </ingestible>
+        <plant>
+            <fertilityMin>0.5</fertilityMin>
+            <fertilitySensitivity>1.0</fertilitySensitivity>
+            <harvestDestroys>true</harvestDestroys>
+            <soundHarvesting>Harvest_Standard</soundHarvesting>
+            <soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+            <harvestWork>190</harvestWork>
+            <sowWork>260</sowWork>
+            <topWindExposure>0.1</topWindExposure>
+            <visualSizeRange>
+                <min>0.3</min>
+                <max>1.00</max>
+            </visualSizeRange>
+        </plant>
+        <extcomps>
+        </extcomps>
+    </ThingDef>
+
+    <ThingDef ParentName="PlantWithExtComps">
+        <defName>DruidHerbs</defName>
+        <label>druid herbs</label>
+        <description>A beautiful collection of herbs in this pot. You feel slight magic wafting through them.</description>
+        <tickerType>Normal</tickerType>
+        <statBases>
+            <MaxHitPoints>85</MaxHitPoints>
+            <Beauty>34</Beauty>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Plant/Daylily</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <selectable>true</selectable>
+        <ingestible>
+            <nutrition>0.03</nutrition>
+        </ingestible>
+        <plant>
+            <fertilitySensitivity>1</fertilitySensitivity>
+            <dieIfLeafless>true</dieIfLeafless>
+            <reproduces>false</reproduces>
+            <harvestTag>Standard</harvestTag>
+            <harvestDestroys>true</harvestDestroys>
+            <sowWork>400</sowWork>
+            <sowTags>
+                <li>SowDruidDefensiveSpot</li>
+                <li>Decorative</li>
+            </sowTags>
+            <growMinGlow>0.3</growMinGlow>
+            <topWindExposure>0.1</topWindExposure>
+            <growDays>1.5</growDays>
+            <lifespanFraction>5</lifespanFraction>
+            <visualSizeRange>
+                <min>0.3</min>
+                <max>1.05</max>
+            </visualSizeRange>
+        </plant>
+        <extcomps>
+        </extcomps>
+    </ThingDef>
+
+
+
+    <ThingDef ParentName="PlantWithExtComps">
+        <defName>EntanglingVinePlant</defName>
+        <label>entangling vine plant</label>
+        <description>This wirey plant seems to move and sway on its own. You feel like it's watching you, and that makes you nervous.</description>
+        <tickerType>Normal</tickerType>
+        <statBases>
+            <MaxHitPoints>85</MaxHitPoints>
+            <Beauty>34</Beauty>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Plant/Daylily</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <selectable>true</selectable>
+        <ingestible>
+            <nutrition>0.03</nutrition>
+        </ingestible>
+        <plant>
+            <fertilitySensitivity>1</fertilitySensitivity>
+            <dieIfLeafless>true</dieIfLeafless>
+            <reproduces>false</reproduces>
+            <harvestTag>Standard</harvestTag>
+            <harvestDestroys>true</harvestDestroys>
+            <sowWork>400</sowWork>
+            <sowTags>
+                <li>SowDruidDefensiveSpot</li>
+            </sowTags>
+            <growMinGlow>0.3</growMinGlow>
+            <topWindExposure>0.1</topWindExposure>
+            <growDays>1.5</growDays>
+            <lifespanFraction>5</lifespanFraction>
+            <visualSizeRange>
+                <min>0.3</min>
+                <max>1.05</max>
+            </visualSizeRange>
+        </plant>
+        <extcomps>
+            <li Class="UnificaMagica.ExtComp_PlantTrap_Generator">
+                <ArmedLabel>Entangling Vines ready</ArmedLabel>
+                <numGen>6</numGen>
+                <genThing>EntanglingVines</genThing>
+                <rearmTime>1000</rearmTime>
+                <TrapSpringChance>0.8</TrapSpringChance>
+                <isAoE>true</isAoE>
+            </li>
+        </extcomps>
+    </ThingDef>
+
+    <ThingDef>
+        <defName>EntanglingVines</defName>
+        <thingClass>ThingWithComps</thingClass>
+        <category>Item</category>
+        <label>entangling vines</label>
+        <description>Vines snare you as you step.</description>
+        <graphicData>
+            <texPath>Things/Druid/Plant_EntanglingVine</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.0</fillPercent>
+        <soundInteract>Wood_Drop</soundInteract>
+        <soundDrop>Wood_Drop</soundDrop>
+        <statBases>
+            <MarketValue>0.0</MarketValue>
+            <MaxHitPoints>10</MaxHitPoints>
+            <Mass>0.4</Mass>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>500</DeteriorationRate>
+            <Beauty>-1</Beauty>
+            <Cleanliness>-1</Cleanliness>
+        </statBases>
+        <selectable>true</selectable>
+        <tickerType>Rare</tickerType>
+        <pathCost>90</pathCost>
+        <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+        <drawerType>MapMeshOnly</drawerType>
+        <designateHaulable>true</designateHaulable>
+        <saveCompressible>true</saveCompressible>
+        <stackLimit>1</stackLimit>
+        <tradeability>Never</tradeability>
+        <thingCategories>
+            <li>Chunks</li>
+        </thingCategories>
+        <comps>
+            <li Class="CompProperties_Rottable">
+                <daysToRotStart>0.1</daysToRotStart>
+                <rotDestroys>true</rotDestroys>
+            </li>
+        </comps>
+    </ThingDef>
+
+
+
+    <ThingDef ParentName="PlantWithExtComps">
+        <defName>PoppingFernPlant</defName>
+        <label>popping fern plant</label>
+        <description>A typical fern in most aspects until you see the large central pod. It is covered in downy fur and seems to breath slightly under stress.</description>
+        <tickerType>Normal</tickerType>
+        <statBases>
+            <MaxHitPoints>15</MaxHitPoints>
+            <Beauty>34</Beauty>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Plant/Daylily</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+        </graphicData>
+        <altitudeLayer>Item</altitudeLayer>
+        <selectable>true</selectable>
+        <ingestible>
+            <nutrition>0.03</nutrition>
+        </ingestible>
+        <plant>
+            <fertilitySensitivity>1</fertilitySensitivity>
+            <dieIfLeafless>true</dieIfLeafless>
+            <reproduces>false</reproduces>
+            <harvestTag>Standard</harvestTag>
+            <harvestDestroys>true</harvestDestroys>
+            <sowWork>400</sowWork>
+            <sowTags>
+                <li>SowDruidDefensiveSpot</li>
+            </sowTags>
+            <growMinGlow>0.3</growMinGlow>
+            <topWindExposure>0.1</topWindExposure>
+            <growDays>1.5</growDays>
+            <lifespanFraction>5</lifespanFraction>
+            <visualSizeRange>
+                <min>0.3</min>
+                <max>1.05</max>
+            </visualSizeRange>
+        </plant>
+        <extcomps>
+            <li Class="UnificaMagica.ExtComp_PlantTrap_Explosive">
+                <ArmedLabel>Ready to explode</ArmedLabel>
+                <rearmTime>5000</rearmTime>
+                <isAoE>true</isAoE>
+                <TrapSpringChance>0.8</TrapSpringChance>
+                <damageAmountBase>50</damageAmountBase>
+                <soundExplode>MortarBomb_Explode</soundExplode>
+            </li>
+        </extcomps>
+    </ThingDef>
+
+
+    <!-- A place to grow Druid short range defenses -->
+    <ThingDef ParentName="FurnitureBase">
+        <defName>DruidDefensiveSpot</defName>
+        <label>druid defensive spot</label>
+        <description>Druids plant specialized plants here for short range defenses.</description>
+        <thingClass>Building_PlantGrower</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Furniture/PlantPot</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+                <volume>(0.3, 0.6, 0.3)</volume>
+            </shadowData>
+            <damageData>
+                <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+        </graphicData>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.20</fillPercent>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <WorkToBuild>495</WorkToBuild>
+            <Mass>2</Mass>
+            <Flammability>0.0</Flammability>
+        </statBases>
+        <stuffCategories>
+            <li>Woody</li>
+            <li>Stony</li>
+        </stuffCategories>
+        <costStuffCount>35</costStuffCount>
+        <comps>
+            <li Class="CompProperties_Forbiddable"/>
+        </comps>
+        <fertility>1.0</fertility>
+        <designationHotKey>Misc9</designationHotKey>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <building>
+            <defaultPlantToGrow>DruidHerbs</defaultPlantToGrow>
+            <sowTag>SowDruidDefensiveSpot</sowTag>
+        </building>
+        <rotatable>false</rotatable>
+        <placeWorkers>
+            <li>PlaceWorker_NotUnderRoof</li>
+        </placeWorkers>
+        <specialDisplayRadius>2.4</specialDisplayRadius>
+        <damageMultipliers>
+            <li>
+                <damageDef>Bomb</damageDef>
+                <multiplier>.1</multiplier>
+            </li>
+        </damageMultipliers>
+        <!--
+        TODO:
+        * attach to research project
+    -->
+</ThingDef>
+
+
+</Defs>
